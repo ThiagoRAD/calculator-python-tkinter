@@ -17,12 +17,14 @@ class Calculator(tk.Tk):
             ('7', 1, 0), ('8', 1, 1), ('9', 1, 2), ('÷', 1, 3),
             ('4', 2, 0), ('5', 2, 1), ('6', 2, 2), ('x', 2, 3),
             ('1', 3, 0), ('2', 3, 1), ('3', 3, 2), ('-', 3, 3),
-            ('0', 4, 0), ('+', 4, 3), ('=', 4, 2)
+            ('0', 4, 0), ('CE', 4, 1), ('=', 4, 2), ('+', 4, 3)
         ]
 
         for (text, row, col) in buttons:
             if text == '=':
                 btn = tk.Button(self, text=text, font=("Arial", 18), command=self.calculate, height=2, width=5)
+            elif text == 'CE':
+                btn = tk.Button(self, text=text, font=("Arial", 18), command=self.reset, height=2, width=5)
             else:
                 btn = tk.Button(self, text=text, font=("Arial", 18), command=lambda t=text: self.on_button_click(t), height=2, width=5)
             btn.grid(row=row, column=col, padx=5, pady=5)
@@ -53,6 +55,10 @@ class Calculator(tk.Tk):
             self.display.delete(0, tk.END)
             self.display.insert(tk.END, "Error")
             self.expression = ""
+
+    def reset(self):
+        self.expression = ""
+        self.display.delete(0, tk.END)
 
 if __name__ == "__main__":
     app = Calculator()
