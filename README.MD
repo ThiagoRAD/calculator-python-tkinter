@@ -9,4 +9,3 @@ This is a simple calculator app built with Python and Tkinter.
 
     python calculator.py
 
-The calculator window will appear with buttons for digits 0-9, +, -, x, ÷, and =.
